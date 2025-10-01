@@ -1,5 +1,6 @@
 import pygame
-from variables import RED
+
+from variables import RED, BLUE, rect_color
 
 
 
@@ -15,7 +16,7 @@ class grid:
     def split_grid(self):
             for column in range(0,self.width,self.grid_square):
                 for row in range(0,self.height,self.grid_square):
-                    pygame.draw.rect(self.screen,RED,(column,row,self.grid_square,self.grid_square),1)
+                    pygame.draw.rect(self.screen,rect_color,(column,row,self.grid_square,self.grid_square),1)
             
-
+    
 
