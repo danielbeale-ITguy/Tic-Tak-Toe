@@ -14,7 +14,6 @@ screen = pygame.display.set_mode((screen_height,screen_width))
 game_grid = grid(screen,screen_width,screen_height,grid_square)
 
 
-rect1 = pygame.Rect(0,0,50,50)
 
 
 while game_running:
@@ -23,14 +22,13 @@ while game_running:
             game_running = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x,mouse_y = pygame.mouse.get_pos()
-            print(mouse_x,mouse_y)
-
-    
-    game_grid.split_grid()
+            game_grid.clicked(mouse_x,mouse_y)
+     
 
 
 
-    pygame.draw.rect(screen,rect_color,(rect1))
+    game_grid.draw()
+
     
     
 
