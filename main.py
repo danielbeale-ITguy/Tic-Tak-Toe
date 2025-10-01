@@ -23,7 +23,12 @@ while game_running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x,mouse_y = pygame.mouse.get_pos()
             game_grid.clicked(mouse_x,mouse_y)
-     
+        elif event.type == pygame.MOUSEBUTTONUP:
+            game = game_grid.check_win()
+            if game == True:
+                game_running = False
+        
+        
 
 
 
@@ -36,6 +41,7 @@ while game_running:
     pygame.display.update()
 
 pygame.quit()
+
 
 
 

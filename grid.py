@@ -17,8 +17,8 @@ class grid:
 
       
     def split_grid(self):
-            for column in range(0,self.width,self.grid_square):
-                for row in range(0,self.height,self.grid_square):
+            for row in range(0,self.height,self.grid_square):
+                for column in range(0,self.width,self.grid_square):
                   rect = pygame.Rect(column,row,self.grid_square,self.grid_square)
                   self.grid_list.append((rect,self.default_color))
             
@@ -33,3 +33,10 @@ class grid:
             if rect.collidepoint(mouse_x,mouse_y):
                 color = BLUE
                 self.grid_list[cell] = (rect,color)
+
+    def check_win(self):
+        if self.grid_list[0][1] == (0,0,255) and \
+        self.grid_list[1][1] == (0,0,255) and \
+        self.grid_list[2][1] == (0,0,255):
+            print('winner')
+
