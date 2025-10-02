@@ -15,19 +15,22 @@ game_grid = grid(screen,screen_width,screen_height,grid_square)
 
 
 
-
 while game_running:
+    game = True
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game_running = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x,mouse_y = pygame.mouse.get_pos()
             game_grid.clicked(mouse_x,mouse_y)
+
+
+
         elif event.type == pygame.MOUSEBUTTONUP:
             game = game_grid.check_win()
             if game == True:
                 game_running = False
-        
+            
         
 
 

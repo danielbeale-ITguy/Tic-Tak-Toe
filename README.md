@@ -1,1 +1,1 @@
-this is a tik-tak-toe game made in pygame
+This Repo is my second attemp at pygame, which re-creates the game Tik-Tak-Toe in pygame.

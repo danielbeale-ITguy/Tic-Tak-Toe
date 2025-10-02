@@ -1,5 +1,5 @@
 import pygame
-from variables import RED, BLUE, rect_color
+from variables import RED, BLUE,GREEN
 
 
 
@@ -12,7 +12,9 @@ class grid:
         self.screen = screen
         self.grid_list = []
         self.default_color = RED
-        self.changed_color = BLUE
+        self.cross_color = BLUE
+        self.naught_color = GREEN
+        self.turn_num = 0
         self.split_grid()
 
       
@@ -29,14 +31,27 @@ class grid:
             pygame.draw.rect(self.screen, (100, 100, 100), rect, 1) 
 
     def clicked(self,mouse_x,mouse_y):
-        for cell,(rect,color) in  enumerate(self.grid_list):
-            if rect.collidepoint(mouse_x,mouse_y):
-                color = BLUE
-                self.grid_list[cell] = (rect,color)
+        if self.turn_num % 2 == 0:
+            for cell,(rect,color) in  enumerate(self.grid_list):
+                if rect.collidepoint(mouse_x,mouse_y):
+                    color = BLUE
+                    self.turn_num += 1
+                    self.grid_list[cell] = (rect,color)
+                    print(self.turn_num)
+        else:
+            for cell,(rect,color) in  enumerate(self.grid_list):
+                if rect.collidepoint(mouse_x,mouse_y):
+                    color = GREEN
+                    self.turn_num += 1
+                    self.grid_list[cell] = (rect,color)
+                    print(self.turn_num)
+
+
 
     def check_win(self):
         if self.grid_list[0][1] == (0,0,255) and \
         self.grid_list[1][1] == (0,0,255) and \
         self.grid_list[2][1] == (0,0,255):
-            print('winner')
-
+            return True
+    
+            
