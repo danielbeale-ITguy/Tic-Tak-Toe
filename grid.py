@@ -69,7 +69,9 @@ class grid:
 
 
 
-
+    def turn_display(self):
+        if self.turn_num % 2 == 0:
+            return True
 
 
 

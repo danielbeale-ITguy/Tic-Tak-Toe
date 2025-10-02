@@ -5,21 +5,30 @@ from grid import grid
 
 
 
+
 def main():
 
     pygame.init()
 
-
+    
+    
     screen = pygame.display.set_mode((screen_height,screen_width))
-    game_grid = grid(screen,screen_width,screen_height,grid_square)
+    game_grid = grid(screen,screen_half,screen_half,grid_square)
+
+    turn_display = (475,75,150,150)
+    turn_display_cross = pygame.image.load('cross.png')
+    turn_display_nought = pygame.image.load('nought.png')
+    screen.blit(turn_display_cross,turn_display)
     #TEST IMAGE LOADING
 
-
-
+    screen.fill(WHITE)
 
     while True:
         game = True
+        
+        
         for event in pygame.event.get():
+            
             if event.type == pygame.QUIT:
                 pygame.quit()
 
@@ -28,13 +37,26 @@ def main():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_x,mouse_y = pygame.mouse.get_pos()
                 game_grid.clicked(mouse_x,mouse_y)
-
+                screen.fill(WHITE)
             elif event.type == pygame.MOUSEBUTTONUP:
                 game = game_grid.check_win()
+                display = game_grid.turn_display()
                 if game == True:
                     main()
 
+
+
+                if display == True:
+                    screen.blit(turn_display_cross,turn_display)
+                    pygame.display.flip()
+                else:
+                    screen.blit(turn_display_nought,turn_display)
+                    pygame.display.update()
+
+
         game_grid.draw()
+        
+        
 
 
 
@@ -43,8 +65,7 @@ def main():
 
 
 
-
-
+        
         
         pygame.display.update()
 
